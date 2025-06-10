@@ -1,3 +1,14 @@
+# Thinkloop - AI Voice Receptionist
+
+**Project Status (Phase 1 - Initial Setup & Basic FAQ):**
+- Basic project structure created (`src`, `tests`, `docs`, `config`).
+- A simple FAQ handler (`src/faq_handler.py`) for admission inquiries is implemented with predefined questions and answers.
+- Unit tests (`tests/test_faq_handler.py`) for the FAQ handler are in place and passing.
+- Conceptual documentation for Make.com workflow (`docs/make_com_workflow_structure.md`) and setup (`docs/setup.md`) has been created.
+- Next steps will involve expanding functionalities, implementing NLP, and actual integrations.
+
+---
+(Original README content below)
 # Thinkloop
 # Advanced AI Voice Receptionist for Educational Institutions
 
