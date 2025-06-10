@@ -1,13 +1,14 @@
 # Thinkloop - AI Voice Receptionist
 
-**Project Status (Phase 2 - Core "From Scratch" Components & Enhanced FAQ):**
-- System architecture designed for a "from scratch" build, documented in `docs/architecture.md`.
-- A `simulated_call_handler.py` created to mimic call interactions.
-- FAQ handler (`src/faq_handler.py`) integrated with the call simulator and enhanced with keyword-based matching and more FAQs.
-- Basic stubs for voice processing (STT/TTS) created in `src/voice_processor.py`.
-- Unit tests added for all new components and existing tests updated; all tests are passing.
-- Documentation updated to reflect Phase 2 progress (`docs/setup.md`, `README.md`).
-- Next steps will involve implementing basic intent parsing, further refining modules, and planning for actual voice and external system integrations.
+**Project Status (Phase 3 - Basic Application Framework & TTS Integration with Fallback):**
+- Established a core application framework in `src/app.py` that orchestrates various modules.
+- Implemented a basic intent parser (`src/intent_parser.py`) for distinguishing user intents (FAQ, exit).
+- Developed a response generator (`src/response_generator.py`) that uses the `faq_handler` to provide answers.
+- Integrated Coqui XTTS-v2 for Text-to-Speech in `src/voice_processor.py`. Due to environment limitations (disk space for PyTorch/CUDA), this integration includes a graceful fallback to a text-based stub if TTS initialization fails. Actual audio output requires a suitable environment. STT remains a stub.
+- Added basic configuration management with `config/settings.py`.
+- All new and updated components are covered by unit tests, and all tests are passing.
+- Documentation (`docs/setup.md`, `README.md`) updated to reflect Phase 3 progress.
+- Next steps will focus on enhancing intent parsing, making STT functional (even if basic), and building out more sophisticated dialogue management.
 
 ---
 (Original README content below)
