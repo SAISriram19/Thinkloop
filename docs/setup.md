@@ -62,3 +62,47 @@ python tests/test_voice_processor.py
 python tests/test_faq_handler.py # (Updated tests)
 ```
 All tests should pass.
+
+## Phase 3: Basic Application Framework & TTS (Stubbed) Integration
+
+### Prerequisites
+- Python 3.x installed.
+- **`TTS` (from Coqui TTS)**: This library is listed in `requirements.txt`.
+    - **Note on current environment:** Due to disk space limitations in the current development environment, `pip install TTS` may fail or the library may not be fully functional. The `src/voice_processor.py` module is designed to gracefully fall back to a text-based stub if Coqui TTS cannot be initialized. Actual audio generation requires an environment where Coqui TTS and its dependencies (including PyTorch) can be fully installed.
+
+### Key Components Developed/Updated
+- **`src/app.py`**: Main application orchestrator.
+- **`src/intent_parser.py`**: Basic intent recognition (FAQ, exit, unknown).
+- **`src/response_generator.py`**: Generates text responses based on intent, using `faq_handler`.
+- **`src/voice_processor.py`**: Includes Coqui XTTS-v2 integration for TTS, with a fallback to stub if the library is not functional. STT remains a basic stub.
+- **`config/settings.py`**: Basic configuration file.
+- **`tests/`**: New tests for `app`, `intent_parser`, `response_generator`, and updated tests for `voice_processor`.
+
+### Running the Application (Simulated)
+The main application logic can be tested via the simulated call handler:
+```bash
+python src/simulated_call_handler.py
+```
+This will use `src/app.py` to process your text input. Responses will be printed to the console. If Coqui TTS were fully functional, it would save audio files to the `audio_outputs/` directory; in the current stubbed mode, it will indicate that no audio was generated.
+
+### Running Individual Modules for Testing
+You can also run some modules directly to see their basic behavior:
+```bash
+python src/intent_parser.py
+python src/response_generator.py
+python src/voice_processor.py # (Will show TTS stub/fallback status)
+python config/settings.py
+python src/app.py # (Runs its own internal test loop)
+```
+
+### Running Tests
+To run all unit tests for Phase 3 components (and previous ones):
+```bash
+python tests/test_app.py
+python tests/test_intent_parser.py
+python tests/test_response_generator.py
+python tests/test_voice_processor.py
+python tests/test_faq_handler.py
+python tests/test_simulated_call_handler.py
+```
+All tests should pass.

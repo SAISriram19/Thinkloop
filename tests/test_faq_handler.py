@@ -3,7 +3,16 @@ import unittest
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+# Add project root to sys.path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+# Add src to sys.path for importing faq_handler
+SRC_PATH = os.path.join(PROJECT_ROOT, 'src')
+if SRC_PATH not in sys.path:
+    sys.path.insert(1, SRC_PATH)
+
 from faq_handler import get_answer, PREDEFINED_FAQS, DEFAULT_FALLBACK_ANSWER
 
 class TestFAQHandlerRefined(unittest.TestCase):
