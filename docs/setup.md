@@ -32,3 +32,33 @@ Refer to `docs/make_com_workflow_structure.md` for the conceptual outline of how
 3. The returned answer would then be relayed back to the user via the Make.com scenario.
 
 This phase does not include actual Make.com integration, only the foundational Python script.
+
+
+## Phase 2: Running the Simulated Call Handler with FAQ Integration
+
+### Prerequisites
+- Python 3.x installed.
+- No external Python libraries are required for this phase beyond the standard library.
+
+### Components
+- **`src/simulated_call_handler.py`**: Simulates a call environment and interacts with the FAQ handler.
+- **`src/faq_handler.py`**: Provides answers to questions based on keyword matching.
+- **`src/voice_processor.py`**: Contains stubs for STT/TTS (not directly run, but used conceptually).
+- **`tests/`**: Contains unit tests for the above components.
+- **`docs/architecture.md`**: Describes the system architecture.
+
+### Running the Simulation
+To run the simulated call handler:
+```bash
+python src/simulated_call_handler.py
+```
+This will start an interactive loop where you can type questions (simulating user speech) and see the AI's responses from the FAQ handler. Type 'exit' or 'quit' to end the simulation.
+
+### Running Tests
+To run all tests for Phase 2 components:
+```bash
+python tests/test_simulated_call_handler.py
+python tests/test_voice_processor.py
+python tests/test_faq_handler.py # (Updated tests)
+```
+All tests should pass.
