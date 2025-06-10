@@ -1,11 +1,13 @@
 # Thinkloop - AI Voice Receptionist
 
-**Project Status (Phase 1 - Initial Setup & Basic FAQ):**
-- Basic project structure created (`src`, `tests`, `docs`, `config`).
-- A simple FAQ handler (`src/faq_handler.py`) for admission inquiries is implemented with predefined questions and answers.
-- Unit tests (`tests/test_faq_handler.py`) for the FAQ handler are in place and passing.
-- Conceptual documentation for Make.com workflow (`docs/make_com_workflow_structure.md`) and setup (`docs/setup.md`) has been created.
-- Next steps will involve expanding functionalities, implementing NLP, and actual integrations.
+**Project Status (Phase 2 - Core "From Scratch" Components & Enhanced FAQ):**
+- System architecture designed for a "from scratch" build, documented in `docs/architecture.md`.
+- A `simulated_call_handler.py` created to mimic call interactions.
+- FAQ handler (`src/faq_handler.py`) integrated with the call simulator and enhanced with keyword-based matching and more FAQs.
+- Basic stubs for voice processing (STT/TTS) created in `src/voice_processor.py`.
+- Unit tests added for all new components and existing tests updated; all tests are passing.
+- Documentation updated to reflect Phase 2 progress (`docs/setup.md`, `README.md`).
+- Next steps will involve implementing basic intent parsing, further refining modules, and planning for actual voice and external system integrations.
 
 ---
 (Original README content below)
@@ -16,7 +18,7 @@
 Develop an advanced AI voice receptionist tailored for colleges, universities, and schools to handle admission inquiries and general receptionist duties. The AI must operate 24/7, provide a near-human conversational experience, reduce staff workload, and improve response times by efficiently managing calls and inquiries.
 
 ## System Requirements
-1. **Platform**: Build using Make.com's automation capabilities, integrating with a robust voice AI platform (e.g., Dialogflow, Twilio, or ElevenLabs for voice synthesis) for real-time voice interaction.
+1. **Platform**: The system will be developed from scratch, focusing on a modular architecture. This will involve selecting and integrating appropriate technologies for telephony, voice processing (Text-to-Speech and Speech-to-Text), Natural Language Processing (NLP), and workflow automation.
 2. **Availability**: Operate 24/7 with high uptime and reliability to handle calls at any time.
 3. **Voice Capabilities**:
    - Use natural language processing (NLP) for human-like conversation.
@@ -81,24 +83,22 @@ Develop an advanced AI voice receptionist tailored for colleges, universities, a
   - AI: "I can help with general scholarship questions, but for specific application details, I’ll connect you to our financial aid team. To make this quick, could you share your application ID? I’ll pass along a summary to ensure they have all the details."
 
 ### 5. Technical Implementation Details
-- **Voice Platform**:
-  - Use a text-to-speech (TTS) engine (e.g., ElevenLabs, Google TTS) for natural-sounding voice output.
-  - Implement speech-to-text (STT) for accurate caller input recognition, even with accents or background noise.
-- **Make.com Workflow**:
-  - Create a workflow that triggers on incoming calls via a telephony integration (e.g., Twilio).
-  - Parse caller input using NLP to identify intent and extract entities (e.g., “application deadline” → intent: query_deadline).
-  - Query the institution’s database or CRM for real-time data (e.g., program details, event schedules).
-  - Log interactions in the CRM and send follow-up emails/SMS as needed (e.g., application links, appointment confirmations).
+- **Core System Components**:
+  - **Telephony Integration**: Interface with telephony systems to manage incoming and outgoing calls.
+  - **Voice Processing**: Employ Text-to-Speech (TTS) for natural-sounding voice output and Speech-to-Text (STT) for accurate caller input recognition.
+  - **NLP Engine**: Parse caller input to identify intent and extract relevant entities.
+  - **Business Logic & Workflow Automation**: Orchestrate the sequence of actions, manage state, and integrate with other components.
+  - **Data Integration**: Connect to databases, CRM systems, and calendar systems for real-time information access and logging.
 - **Error Handling**:
   - Gracefully handle unclear inputs (e.g., “I’m not sure what you mean, could you clarify?”).
-  - Fallback to human transfer if the AI cannot resolve the query after two attempts.
+  - Fallback to human transfer if the AI cannot resolve the query after a reasonable number of attempts.
 - **Testing**:
   - Simulate various call scenarios (e.g., angry caller, unclear speech, complex queries) to ensure robustness.
   - Validate multilingual support and CRM/database integrations.
 
 ## Customization Options
 - **Institution-Specific Data**:
-  - Allow the institution to upload program details, FAQs, and contact directories via a Make.com module.
+  - Allow the institution to upload or connect to their program details, FAQs, and contact directories.
   - Support custom voice branding (e.g., accent, gender, tone) to align with the institution’s identity.
 - **Scalable Modules**:
   - Enable/disable features (e.g., appointment scheduling, multilingual support) based on the institution’s needs.
@@ -110,27 +110,18 @@ Develop an advanced AI voice receptionist tailored for colleges, universities, a
 - **Workload Reduction**: Automate 70% of routine inquiries, freeing staff for complex tasks.
 - **Uptime**: Maintain 99.9% availability for 24/7 operation.
 
-## Example Workflow in Make.com
-1. **Trigger**: Incoming call via Twilio.
-2. **Action 1**: Convert caller speech to text using STT.
-3. **Action 2**: Process text with NLP to identify intent and entities.
-4. **Action 3**: Query database/CRM for relevant information (e.g., program details).
-5. **Action 4**: Generate a natural-language response and convert to voice via TTS.
-6. **Action 5**: Log interaction in CRM and send follow-up (e.g., email with links).
-7. **Action 6**: Escalate to human staff if needed, with a call summary.
-
 ## Constraints
 - Ensure compliance with data privacy laws (FERPA, GDPR).
 - Avoid overpromising (e.g., guaranteeing admission outcomes).
-- Limit call duration to 5 minutes for automated handling unless escalated.
+- Limit call duration for automated handling unless escalated, based on configurable parameters.
 
 ## Deliverables
-- A fully functional Make.com workflow for the AI voice receptionist.
+- A fully functional AI voice receptionist system, built from scratch.
 - Documentation for setup, customization, and integration with institution systems.
 - Test scripts for validating functionality across common call scenarios.
-- A dashboard for monitoring call analytics and performance metrics.
+- A dashboard or reporting mechanism for monitoring call analytics and performance metrics.
 
 ## Notes
-- Prioritize user-friendly setup for institutions with limited technical expertise.
-- Ensure the AI can handle high call volumes during peak admission seasons.
+- Prioritize user-friendly setup and administration for institutions with limited technical expertise.
+- Ensure the system can handle high call volumes during peak admission seasons.
 - Regularly update the AI’s knowledge base with new program details and FAQs.
